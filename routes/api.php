@@ -18,10 +18,10 @@ Route::get('login',function(){return view('login');});
 Route::post('registeruser',[AuthController::class,'register']);
 Route::post('loginuser',[AuthController::class,'login']);
 
-// Route::middleware('auth:api')->group(function () {
-//     Route::middleware(['role:admin'])->get('/admin-dashboard', function () {
-//         return response()->json(['message' => 'Welcome Admin']);
-//     });
+Route::middleware('auth:api')->group(function () {
+    Route::middleware(['role:admin'])->get('/admin-dashboard', function () {
+        return response()->json(['message' => 'Welcome Admin']);
+    });
 
 //     Route::middleware(['role:user'])->get('/user-dashboard', function () {
 //         return response()->json(['message' => 'Welcome User']);
@@ -30,10 +30,10 @@ Route::post('loginuser',[AuthController::class,'login']);
 //     Route::middleware(['role:supervisor'])->get('/supervisor-dashboard', function () {
 //         return response()->json(['message' => 'Welcome Supervisor']);
 //     });
-// });
-
-Route::middleware(['auth:api',RoleMiddleware::class.':admin'])->group(function () {
-    Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
+});
+ 
+Route::middleware(['auth:api','role:admin'])->group(function () {
+//    Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
     Route::get('/project', [AdminController::class, 'dashboard']);
     Route::get('/projtask', [AdminController::class, 'dashboard']);
     Route::get('/activity', [AdminController::class, 'dashboard']);

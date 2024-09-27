@@ -17,16 +17,16 @@ class RoleMiddleware
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function handle(Request $request, Closure $next, string $role): Response
-    {
-        if (!$request->user()) {
-            return response()->json(['error' => 'Unauthenticated'], 401);
-        }
+    { error_log($request);
+        // if (!$request->user()) {
+        //     return response()->json(['error' => 'Unauthenticated'], 500);
+        // }
 
         // Check if the user's role matches the required role for this route
-        if ($request->user()->role !== $role) {
+        if ($request->user()->role !== "admin") {
             return response()->json(['error' => 'Unauthorized'], 403);
         }
-
+       
         return $next($request);
     }
 }

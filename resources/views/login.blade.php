@@ -35,6 +35,7 @@
                 <h4>Hello! let's get started</h4>
                 <h6 class="fw-light">Sign in to continue.</h6>
                 <form class="pt-3" id="loginform" method="post">
+                @csrf
                   <div class="form-group">
                     <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
                   </div>

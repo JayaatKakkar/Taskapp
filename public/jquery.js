@@ -2,7 +2,7 @@ jQuery(function(){
     // ...............Register Request.......
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         }
     });
     $(document).on("submit","#loginform",function(e){
@@ -19,7 +19,15 @@ jQuery(function(){
                 console.log(data);
                 localStorage.setItem('auth_token', data.token);
                 if(data.role=="admin"){
-                    window.location.href = "../api/admin-dashboard";
+                    $.ajax({
+                        url:"../api/admin-dashboard",
+                        type:"get",
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('auth_token') // Include the token
+                        },
+                        dataType:'json'
+                    })
+                    // window.location.href = ;
                 }else if(data.role=="user"){
                     window.location.href="../api/user-dashboard";
                 }

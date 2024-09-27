@@ -51,8 +51,8 @@ class AuthController extends Controller
             "password"=>"required",
         ]);
         $user=User::where("email",$request->email)->first();
-         error_log($user);
-            error_log(bcrypt($request->password));
+        //  error_log($user);
+            // error_log(bcrypt($request->password));
         if(!empty($user) && Hash::check($request->password,$user->password)){
                 $token=$user->createToken("mytoken")->accessToken;
                 return response()->json([
