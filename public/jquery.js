@@ -29,7 +29,14 @@ jQuery(function(){
                     })
                     // window.location.href = ;
                 }else if(data.role=="user"){
-                    window.location.href="../api/user-dashboard";
+                    $.ajax({
+                        url:"../api/user-dashboard",
+                        type:"get",
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('auth_token') // Include the token
+                        },
+                        dataType:'json'
+                    })
                 }
                 // document.querySelectorAll('.text-danger').forEach(el => el.remove());
 

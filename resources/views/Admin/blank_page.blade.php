@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Star Admin2 </title>
+    <title>Evetour Seasoning </title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/feather/feather.css">
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -305,7 +305,10 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            Admin Blank Page
+            <div class="container">
+          @yield('admincontent')
+            </div>
+            <!-- Admin Blank Page -->
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.php -->
@@ -322,19 +325,25 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <!-- plugins:js -->
+    <!-- plugins:js -->  
+     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
     <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../../assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="../../assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>  
     <!-- endinject -->
     <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="../../assets/vendors/progressbar.js/progressbar.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="../../assets/js/off-canvas.js"></script>
     <script src="../../assets/js/template.js"></script>
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/hoverable-collapse.js"></script>
     <script src="../../assets/js/todolist.js"></script>
+    <!-- <script src="../../assets/js/jquery.cookie.js" type="text/javascript"></script> -->
+    <script src="../../assets/js/dashboard.js"></script>
+
     <!-- endinject -->
     <!-- Custom js for this page-->
     <!-- End custom js for this page-->

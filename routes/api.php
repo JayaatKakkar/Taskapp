@@ -19,8 +19,15 @@ Route::post('registeruser',[AuthController::class,'register']);
 Route::post('loginuser',[AuthController::class,'login']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::middleware(['role:admin'])->get('/admin-dashboard', function () {
-        return response()->json(['message' => 'Welcome Admin']);
+    Route::middleware(['role:admin'])->group(function(){
+        Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
+    });
+
+    Route::middleware(['role:user'])->group(function(){
+        Route::get('/user-dashboard', [UserController::class, 'dashboard']);
+    });
+    Route::middleware(['role:supervisor'])->group(function(){
+        Route::get('/sup-dashboard', [AdminController::class, 'dashboard']);
     });
 
 //     Route::middleware(['role:user'])->get('/user-dashboard', function () {
@@ -33,7 +40,7 @@ Route::middleware('auth:api')->group(function () {
 });
  
 Route::middleware(['auth:api','role:admin'])->group(function () {
-//    Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
+   
     Route::get('/project', [AdminController::class, 'dashboard']);
     Route::get('/projtask', [AdminController::class, 'dashboard']);
     Route::get('/activity', [AdminController::class, 'dashboard']);
@@ -41,6 +48,6 @@ Route::middleware(['auth:api','role:admin'])->group(function () {
 });
 
 Route::middleware(['auth:api', 'role:user'])->group(function () {
-    Route::get('/user/dashboard', [UserController::class, 'dashboard']);
+    Route::get('/user-dashboard', [UserController::class, 'dashboard']);
     // Other user routes...
 });
